@@ -1,0 +1,52 @@
+/* videoPlayer.css */
+.container {
+  padding-left: 5px;
+  height: 90%;
+  width: 100%;
+  top: 5%;
+}
+
+.video-js.container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.overlaycss, .overlaycss1, .overlaycss2, .overlaycss3, .overlaycss4 {
+  width: 15%;
+  height: auto;
+}
+
+.customButton {
+  width: 15%;
+  height: auto;
+  bottom: 5%;
+  right: 5%;
+}
+
+@media (max-width: 600px) {
+  .overlaycss, .overlaycss1, .overlaycss2, .overlaycss4 {
+    width: 30%;
+  }
+
+  .customButton {
+    width: 30%;
+    bottom: 10%;
+    right: 10%;
+  }
+}
+
+
+video{
+  /* filter: blur(5px); */
+  object-fit: cover;
+}
+
+.overlaycss3 {
+  width: 100%;
+  z-index: 2000;
+  position: relative;
+  text-align: right;
+  top:-505px;
+  padding-right: 50px;
+  opacity: 0.95;
+}

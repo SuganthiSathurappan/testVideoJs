@@ -1,0 +1,307 @@
+/* App.css */
+#overlay {
+  z-index: 2147483647;
+}
+
+.overlaycss {
+  top: 45%;
+  width: 8%;
+  height: auto;
+}
+
+.overlaycss:hover {
+  cursor: url(./cursorArrow.svg), auto;
+  width: 10%;
+}
+
+
+.vjs-logo-button img {
+  width: 100%;
+  height: 25px;
+  bottom: 0;
+  padding-right: 10px;
+  /* object-fit: contain;  */
+  /* Preserve aspect ratio and fit within the container */
+}
+
+.custom-overlay span {
+  font-size: 20px;
+}
+.overlayTitle1 {
+  width: 100%;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+  top: 20%;
+  position: absolute;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #686164,
+      0 0 40px #686164, 0 0 50px #686164, 0 0 60px #686164, 0 0 70px #686164;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #686164, 0 0 40px #686164,
+      0 0 50px #686164, 0 0 60px #686164, 0 0 70px #686164, 0 0 80px #686164;
+  }
+}
+.overlayTitle1 span {
+  font-size: 6cqw;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.overlaycss1 {
+  left: 15%;
+}
+
+.overlaycss2 {
+  /* bottom: 20%; */
+  left: 35%;
+}
+
+.overlaycss3 {
+  right: 35%;
+}
+
+.overlaycss4 {
+  right: 15%;
+}
+
+.skipoverlaycss {
+  right: 0px;
+  bottom: 5%;
+  width: 20%;
+  background-color: red;
+  border: 2px solid #ccc; /* Add a border */
+  padding: 20px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-skip-button {
+  opacity: 0.95;
+  z-index: 2000;
+  position: absolute;
+  height: 40px;
+  background: transparent;
+  color: fff;
+  box-shadow: 1px 1px 2px rgba(202, 58, 58, 0.1);
+  right: 0px;
+  bottom: 7%;
+  border: 1px solid black;
+  border-right: none;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  padding-top: 5px;
+  border-radius: 5px;
+}
+
+.custom-skip-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.custom-skip-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.custom-skip-button:hover span {
+  padding-right: 25px;
+}
+
+.custom-skip-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/* .custom-skip-button:hover {
+  color: black;
+} */
+
+/* Sales form css */
+.sales-form {
+  /* display: none; */
+  width: auto;
+  top: 25%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sales-form button {
+  width: 100%;
+  font-size: 12px;
+  bottom: 0px;
+  background: #e9522c;
+}
+
+/* communication page css */
+.communication-form {
+  /* display: none; */
+  width: auto;
+  top: 35%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.communication-form button {
+  width: 100%;
+  font-size: 14px;
+  bottom: 0px;
+  background: #e9522c;
+}
+.cancel-button {
+  background: rgba(214, 6, 6, 0.1);
+}
+
+.contactusCss {
+  width: 20%;
+  bottom: 14%;
+  right: 40%;
+}
+.contactusCss:hover {
+  cursor: url(./cursorArrow.svg), auto;
+}
+
+/* contact form css */
+.contact-form {
+  /* display: none; */
+  width: 40%;
+  top: 22%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.contact-form button {
+  width: 100%;
+  font-size: 14px;
+  bottom: 0px;
+  background: #6e9ee5;
+}
+
+.common,
+.overlaycss1,
+.overlaycss2,
+.overlaycss3,
+.overlaycss4,
+.sales-form,
+.overlayTitle1 {
+  height: auto;
+  /* opacity: 0.95; */
+  z-index: 2147483647;
+  position: absolute;
+}
+
+@media (max-width: 768px) {
+  .overlaycss,
+  .overlaycss1,
+  .overlaycss2,
+  .overlaycss4 {
+    width: 30%;
+    z-index: 2000;
+    position: absolute;
+  }
+  .overlaycss {
+    top: 45%;
+    width: 10%;
+    height: auto;
+  }
+  .overlaycss:hover {
+    width: 12%;
+  }
+
+  .customButton {
+    width: 30%;
+    bottom: 10%;
+    right: 10%;
+  }
+
+  .sales-form {
+    top: 20%;
+    left: 37%;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+  }
+}
+
+video {
+  /* filter: blur(2px); */
+  /* opacity: 0.3; */
+  object-fit: cover;
+}
+
+.container {
+  padding-left: 5px;
+  height: 80%;
+  width: 60%;
+  top: 5%;
+}
+
+.video-js.container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.vjs-hidden {
+  display: none !important;
+}
+.hide-controls .vjs-control-bar {
+  display: none;
+}
+
+/* sales form css */
+
+/* Add this to your CSS file or component */
+.sales-form-overlay {
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+}
+
+/* SalesForm.css (or include these styles in your main CSS file) */
+
+.skipoverlaycss button {
+  color: black;
+  /* right: 10px; */
+  /* background-color: #007bff; Set button background color */
+  color: #fff; /* Set button text color */
+  padding: 10px 15px; /* Add padding to the button */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+/* example */
+
+/* YourOverlayStyles.css */
+
+/* Overlay styling */
+.vjs-overlay {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Overlay background color with some transparency */
+  color: white; /* Text color */
+  padding: 20px; /* Padding inside the overlay */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* navbar header */
+.navbar-border {
+  border-bottom: 1px solid gray;
+}
+
+.nav-link {
+  margin-top: 5px;
+  text-transform: capitalize;
+}
+
+.brand-image {
+  margin: 0 15px !important;
+}
+
+/* custom own skin */
