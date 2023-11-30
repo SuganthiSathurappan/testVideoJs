@@ -43,7 +43,7 @@ const VideoPlayer = (props) => {
                 //     // Add your custom logo to the control bar
                 //     const logoButton = player.current.controlBar.addChild('button', {
                 //         text: 'Logo',
-                     
+
                 //         clickHandler: function () {
                 //             // Handle logo button click
                 //             console.log('Logo clicked');
@@ -63,7 +63,7 @@ const VideoPlayer = (props) => {
                 //     logoButton.el().appendChild(newLink);
                 //     logoButton.addClass('vjs-logo-button');
                 // }
-                
+
                 // // Remove all existing controls
                 // player.current.controlBar.children().forEach((child) => {
                 //     player.current.controlBar.removeChild(child);
@@ -73,7 +73,7 @@ const VideoPlayer = (props) => {
                 // // Customize the control bar
                 // addControlBarChild(player.current, 'PlayToggle', {}, 0);
                 // // addControlBarChild(player.current, 'MuteToggle', {}, 1);
-                
+
                 // // Position ProgressControl at the top
                 // addControlBarChild(player.current, 'ProgressControl', {},2); // 0 is the index for top
 
@@ -116,7 +116,7 @@ const VideoPlayer = (props) => {
                 const overlay_contactus = `<div class=" custom-overlay">
                 <button class="common contactusCss" title="Contact Us" id="overlaycontact" target="_blank" onclick="showContactForm()">
                 <img alt="Qries" src="assets/contact us.png"/></button></div>`;
-                
+
                 // Render sales component and get its HTML
 
                 const ContactFormComponent = <ContactForm onClose={closeSalesForm} />;
@@ -128,8 +128,8 @@ const VideoPlayer = (props) => {
 
                     overlays: [
                         {
-                            start: 10, // Show overlay at 10 seconds
-                            end: 20,   // Hide overlay at 11 seconds
+                            start: 88, // Show overlay at 10 seconds
+                            end: 100,   // Hide overlay at 11 seconds
                             content: overlay_Title1 + overlay_content1 + overlay_content2 + overlay_content3 + overlay_content4 + skipOverlay_content,
                             align: 'middle',
                         },
@@ -201,7 +201,7 @@ const VideoPlayer = (props) => {
                     if (overlayElement3) {
                         overlayElement3.style.display = 'none';
                     }
-                  
+
                 }
 
                 // overlay imgaes display block
@@ -259,7 +259,7 @@ const VideoPlayer = (props) => {
             player.current.on('timeupdate', () => {
                 console.log('Current Time:', player.current.currentTime());
 
-                if (player.current.currentTime() >= 10) {
+                if (player.current.currentTime() >= 88 && player.current.currentTime() <= 100) {
                     const overlayElement1 = document.querySelector('.overlaycss1');
                     if (overlayElement1 && overlayElement1.style.display !== 'none') {
                         player.current.pause();
@@ -287,7 +287,7 @@ const VideoPlayer = (props) => {
                     }
                 }
 
-                if (player.current.currentTime() >= 120) {
+                else if (player.current.currentTime() >= 120) {
                     const overlayContactbtn = document.querySelector('.contactusCss');
                     if (overlayContactbtn && overlayContactbtn.style.display !== 'none') {
                         player.current.pause();
@@ -295,6 +295,11 @@ const VideoPlayer = (props) => {
                         player.current.tech().el().style.opacity = '0.5';
                         player.current.el().classList.add('hide-controls');
                     }
+                }
+                else {
+                    player.current.tech().el().style.opacity = '0.95';
+                    player.current.el().classList.remove('hide-controls');
+                    // player.current.play();
                 }
             });
 

@@ -20,8 +20,8 @@ const Communication = ({onClose}) => {
                     </Button>
                 </div>
                 <div className="w-full flex flex-col sm:flex-row gap-3">
-                <Button className='cancel-button'>Yes</Button>
-                    <button color="red" onClick={noModal} className='w-full bg-[#E9522C] text-gray-100 '>No</button>
+                <Button className='cancel-button text-black'>Yes</Button>
+                    <button color="red" onClick={noModal} className='w-full text-black '>No</button>
                     
                 </div>
             </div>

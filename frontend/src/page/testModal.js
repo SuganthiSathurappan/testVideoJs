@@ -63,7 +63,7 @@ const SalesForm = ({ onClose }) => {
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3">
                             <button
-                                className="mt-1 w-full font-semibold bg-[#E9522C] text-gray-100 py-2 my-1 rounded-lg
+                                className="mt-1 w-full font-semibold bg-[#E9522C] text-black py-2 my-1 rounded-lg
                           focus:shadow-outline focus:outline-none"
                                 onClick={onClose}
                             >
