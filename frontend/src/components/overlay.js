@@ -3,9 +3,7 @@ import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import 'videojs-overlay/dist/videojs-overlay.css';
 import 'videojs-overlay';
-import { renderToString } from 'react-dom/server';
 
-import Login from '../page/login'; // Import your Login component
 import Communication from '../page/communication';
 
 
@@ -56,18 +54,8 @@ const VideoPlayer = () => {
         if (player.controlBar) {
           player.controlBar.hide(); // Hide control bar
         }
-        
-    // player.on('click', () => {
-    //   console.log(isLoginFormVisible)
-    //   // Check if the form is visible before resuming
-    //   if (isLoginFormVisible === true) {
 
-    //     console.log("player")
-    //     player.pause();
-    //   }
-    //   else
-    //     player.play()
-    // });
+
       };
 
 
@@ -80,20 +68,23 @@ const VideoPlayer = () => {
           player.controlBar.show();
         }
       };
+
+      player.el().addEventListener('click', handlePlayerClick);
     });
 
+    const handlePlayerClick = () => {
+      console.log(isLoginFormVisible)
+      if (!isLoginFormVisible) {
+        player.play()
+        // Prevent player from resuming when form is visible
+        return;
+      }
+      else {
+        player.pause()
+      }
+      // Handle other click actions here if needed
+    };
 
-    // player.on('click', () => {
-    //   console.log(isLoginFormVisible)
-    //   // Check if the form is visible before resuming
-    //   if (isLoginFormVisible === true) {
-
-    //     console.log("player")
-    //     player.pause();
-    //   }
-    //   else
-    //     player.play()
-    // });
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('fullscreen-toggle-btn'
         .addEventListener('click', toggleFullScreen))

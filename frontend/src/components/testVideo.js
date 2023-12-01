@@ -302,7 +302,6 @@ const VideoPlayer = (props) => {
                 //     });
                 // }
 
-
                 player.current.on("ended", () => {
                     console.log("ended");
                 });
@@ -417,9 +416,9 @@ const VideoPlayer = (props) => {
     };
     const closeContactForm = () => {
         setDisplayContact(false)
-        // if (videoPlayerRef.current) {
-        //     videoPlayerRef.current.play();
-        // }
+        if (videoPlayerRef.current) {
+            videoPlayerRef.current.play();
+        }
 
         player.current.tech().el().style.opacity = '0.95';
     };
