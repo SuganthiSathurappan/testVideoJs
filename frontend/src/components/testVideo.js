@@ -7,6 +7,8 @@ import { renderToString } from 'react-dom/server';
 
 // Import your SalesForm component
 import SalesForm from "../page/testModal";
+import Documentation from "../page/documentation";
+import Reporting from "../page/reporting"
 import Communication from "../page/communication";
 import ContactForm from "../page/contactUs";
 
@@ -18,6 +20,8 @@ const VideoPlayer = (props) => {
     const overlayBlockFunction = useRef(null)
 
     const [displayForm, setDisplayForm] = useState(false);
+    const [displayDocument, setDisplayDocument] = useState(false);
+    const [displayReporting, setDisplayReporting] = useState(false);
     const [displayCommunication, setDisplayCommunication] = useState(false)
     const [displayContact, setDisplayContact] = useState(false)
 
@@ -69,15 +73,15 @@ const VideoPlayer = (props) => {
                 //     player.current.controlBar.removeChild(child);
                 // });
 
-                // // Add only the controls you want
-                // // Customize the control bar
+                // // // Add only the controls you want
+                // // // Customize the control bar
                 // addControlBarChild(player.current, 'PlayToggle', {}, 0);
-                // // addControlBarChild(player.current, 'MuteToggle', {}, 1);
+                // addControlBarChild(player.current, 'MuteToggle', {}, 1);
 
-                // // Position ProgressControl at the top
+                // // // Position ProgressControl at the top
                 // addControlBarChild(player.current, 'ProgressControl', {},2); // 0 is the index for top
 
-                // addControlBarChild(player.current, 'FullscreenToggle', {},4);
+                // addControlBarChild(player.current, 'FullscreenToggle', {},3);
 
 
                 const overlay_Title1 = `<div class="overlayTitle1"><span >Logisuite</span></button>
@@ -91,13 +95,13 @@ const VideoPlayer = (props) => {
                </div>`;
 
                 const overlay_content2 = `<div class="custom-overlay">
-                <button id="happy" class="overlaycss overlaycss2" title="Documentation"  id="overlayButton2" target="_blank">
+                <button class="overlaycss overlaycss2" title="Documentation"  id="overlayButton2" target="_blank" onclick="showDocumentForm()">
                 <img alt="Qries" src="assets/icon2.png" /><br/>
                 <span>Documentation</span>
                 </button></div>`;
 
                 const overlay_content3 = `<div class="custom-overlay">
-                <button class="overlaycss overlaycss3" title="Reporting" id="overlayButton3" target="_blank">
+                <button class="overlaycss overlaycss3" title="Reporting" id="overlayButton3" target="_blank" onclick="showReportForm()">
                 <img alt="Qries" src="assets/icon3.png" /><br/>
                 <span>Reporting</span>
                 </button></div>`;
@@ -109,7 +113,7 @@ const VideoPlayer = (props) => {
                 </button></div>`;
 
                 const skipOverlay_content = `<div class="custom-skip-button">
-                <button id="skipButtonId" class="custom-skip-button" title="skip">
+                <button id="skipButtonId" class="custom-skip-button" title="skip" onclick="handleSkip()">
                 <span> Skip</span>
                 </button></div>`;
 
@@ -135,8 +139,8 @@ const VideoPlayer = (props) => {
                         },
                         {
                             start: 120, // Show overlay at 10 seconds
-                            end: 130,   // Hide overlay at 11 seconds
-                            content: overlay_contactus,
+                            end: 123,   // Hide overlay at 11 seconds
+                            content: overlay_contactus + skipOverlay_content,
                             align: 'middle',
                         },
 
@@ -157,6 +161,18 @@ const VideoPlayer = (props) => {
                     overlayNoneFunction.current()
                 };
 
+                // Define show document Form function
+                window.showDocumentForm = () => {
+                    setDisplayDocument(true);
+                    player.current.pause()
+                    overlayNoneFunction.current()
+                };
+                // Define show document Form function
+                window.showReportForm = () => {
+                    setDisplayReporting(true);
+                    player.current.pause()
+                    overlayNoneFunction.current()
+                };
                 // Define show Communication form function
                 window.showCommunicationForm = () => {
                     setDisplayCommunication(true);
@@ -173,6 +189,34 @@ const VideoPlayer = (props) => {
                         overlayContactbtn.style.display = 'none';
                         // player.current.el().classList.add('hide-controls');
                         // player.current.tech().el().style.opacity = '0.5';
+                    }
+                };
+
+                //skip button click
+                window.handleSkip = () => {
+                    setDisplayCommunication(false)
+                    setDisplayForm(false);
+                    setDisplayContact(false)
+                    setDisplayReporting(false)
+                    setDisplayDocument(false)
+                    overlayNoneFunction.current()
+
+                    const skipElement = document.querySelector('.custom-skip-button');
+                    if (skipElement) {
+                        skipElement.style.display = 'none';
+                    }
+                    if (player.current.currentTime() >= 120) {
+                        const overlayContactbtn = document.querySelector('.contactusCss');
+                        if (overlayContactbtn) {
+                            overlayContactbtn.style.display = 'none';
+                        }            
+                    }
+                    // You can perform any action here
+                    player.current.tech().el().style.opacity = '0.95';
+                    player.current.el().classList.remove('hide-controls');
+                    player.current.play();
+                    if (player.current.controlBar) {
+                        player.current.controlBar.show(); // show control bar
                     }
                 };
 
@@ -230,25 +274,35 @@ const VideoPlayer = (props) => {
                     }
                 }
 
-                //skip button
-                const skipButton = document.getElementById('skipButtonId');
-                if (skipButton) {
-                    skipButton.addEventListener('click', () => {
-                        // alert('Skip Button clicked!');
-                        setDisplayCommunication(false)
-                        setDisplayForm(false);
-                        overlayNoneFunction.current()
-                        const skipElement = document.querySelector('.custom-skip-button');
-                        console.log(skipElement)
-                        if (skipElement) {
-                            skipElement.style.display = 'none';
-                        }
-                        // You can perform any action here
-                        player.current.tech().el().style.opacity = '0.95';
-                        player.current.el().classList.remove('hide-controls');
-                        player.current.play();
-                    });
-                }
+                // //skip button
+                // const skipButton = document.getElementById('skipButtonId');
+                // console.log(skipButton)
+                // if (skipButton) {
+                //     console.log("skipButton")
+                //     skipButton.addEventListener('click', () => {
+                //         alert('Skip Button clicked!');
+                //         setDisplayCommunication(false)
+                //         setDisplayForm(false);
+                //         setDisplayContact(false)
+                //         setDisplayReporting(false)
+                //         setDisplayDocument(false)
+                //         overlayNoneFunction.current()
+                //         const skipElement = document.querySelector('.custom-skip-button');
+                //         console.log(skipElement)
+                //         if (skipElement) {
+                //             skipElement.style.display = 'none';
+                //         }
+                //         // You can perform any action here
+                //         player.current.tech().el().style.opacity = '0.95';
+                //         player.current.el().classList.remove('hide-controls');
+                //         player.current.play();
+                //         if (player.current.controlBar) {
+                //             player.current.controlBar.show(); // show control bar
+                //         }
+                //     });
+                // }
+
+
                 player.current.on("ended", () => {
                     console.log("ended");
                 });
@@ -260,12 +314,16 @@ const VideoPlayer = (props) => {
                 console.log('Current Time:', player.current.currentTime());
 
                 if (player.current.currentTime() >= 88 && player.current.currentTime() <= 100) {
+
                     const overlayElement1 = document.querySelector('.overlaycss1');
                     if (overlayElement1 && overlayElement1.style.display !== 'none') {
                         player.current.pause();
                         // Apply blur and hide controls when overlay is shown
                         player.current.tech().el().style.opacity = '0.5';
                         player.current.el().classList.add('hide-controls');
+                        if (player.current.controlBar) {
+                            player.current.controlBar.hide(); // Hide control bar
+                        }
                     }
                     const overlayElement2 = document.querySelector('.overlaycss2');
                     if (overlayElement2 && overlayElement2.style.display !== 'none') {
@@ -287,13 +345,19 @@ const VideoPlayer = (props) => {
                     }
                 }
 
-                else if (player.current.currentTime() >= 120) {
+                else if (player.current.currentTime() >= 120 && player.current.currentTime() <= 121) {
                     const overlayContactbtn = document.querySelector('.contactusCss');
+                    // if (overlayContactbtn) {
+                    //     overlayContactbtn.style.display = 'block';                       
+                    // }
                     if (overlayContactbtn && overlayContactbtn.style.display !== 'none') {
                         player.current.pause();
                         // Apply blur and hide controls when overlay is shown
                         player.current.tech().el().style.opacity = '0.5';
                         player.current.el().classList.add('hide-controls');
+                        if (player.current.controlBar) {
+                            player.current.controlBar.hide(); // Hide control bar
+                        }
                     }
                 }
                 else {
@@ -302,6 +366,25 @@ const VideoPlayer = (props) => {
                     // player.current.play();
                 }
             });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('fullscreen-toggle-btn'
+                    .addEventListener('click', toggleFullScreen))
+            })
+
+            const toggleFullScreen = async () => {
+                const container = document.getElementById('wrapper');
+                const fullscreenApi = container.requestFullscreen
+                    || container.webkitRequestFullScreen
+                    || container.mozRequestFullScreen
+                    || container.msRequestFullscreen;
+                if (!document.fullscreenElement) {
+                    fullscreenApi.call(container);
+                }
+                else {
+                    document.exitFullscreen();
+                }
+            };
 
             return () => {
                 // Clean up if needed
@@ -312,49 +395,66 @@ const VideoPlayer = (props) => {
         }
     }, []);
 
-    // // Function to add a child to the control bar only if it doesn't exist
-    // const addControlBarChild = (player, componentName, options, index) => {
-    //     const existingChild = player.controlBar.getChild(componentName);
-    //     if (!existingChild) {
-    //         player.controlBar.addChild(componentName, options, index);
-    //     }
-    // };
+    // Function to add a child to the control bar only if it doesn't exist
+    const addControlBarChild = (player, componentName, options, index) => {
+        const existingChild = player.controlBar.getChild(componentName);
+        if (!existingChild) {
+            player.controlBar.addChild(componentName, options, index);
+        }
+    };
 
     //close all form code here
     const closeSalesForm = () => {
         setDisplayForm(false);
+        setDisplayDocument(false)
+        setDisplayReporting(false)
         setDisplayCommunication(false)
         setDisplayContact(false)
-        if (videoPlayerRef.current) {
-            videoPlayerRef.current.play();
-        }
+        // if (videoPlayerRef.current) {
+        //     videoPlayerRef.current.play();
+        // }
         overlayBlockFunction.current()
     };
     const closeContactForm = () => {
         setDisplayContact(false)
-        if (videoPlayerRef.current) {
-            videoPlayerRef.current.play();
-        }
+        // if (videoPlayerRef.current) {
+        //     videoPlayerRef.current.play();
+        // }
+
         player.current.tech().el().style.opacity = '0.95';
     };
 
     return (
         <div className="container">
-            <div id="overlay" className="flex mt-2 items-center text-red-600 font-semibold text-2xl justify-center">Customized Interactive Video Player</div>
+            <div id="overlay" className="flex mt-2 items-center text-red-600 font-semibold text-2xl justify-center">
+                Customized Interactive Video Player
+            </div>
             <div data-vjs-player vjs-big-play-button>
                 <video
                     ref={videoPlayerRef}
                     className="video-js container"
                 />
-            </div>
+                <div id="wrapper">
+                    {displayForm &&
+                        <div id="overlay">
+                            <SalesForm onClose={closeSalesForm} />
+                        </div>
+                    }
+                    {displayDocument &&
+                        <Documentation onClose={closeSalesForm} />
+                    }
+                    {displayReporting &&
+                        <Reporting onClose={closeSalesForm} />
+                    }
+                    {displayCommunication &&
 
-            {displayForm &&
-                <div id="overlay">
-                    <SalesForm onClose={closeSalesForm} />
+                        <Communication onClose={closeSalesForm} />
+                    }
+                    {displayContact &&
+                        <ContactForm onClose={closeContactForm} />
+                    }
                 </div>
-            }
-            {displayCommunication && <Communication onClose={closeSalesForm} />}
-            {displayContact && <ContactForm onClose={closeContactForm} />}
+            </div>
         </div>
     );
 };

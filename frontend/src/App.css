@@ -20,8 +20,7 @@
   height: 25px;
   bottom: 0;
   padding-right: 10px;
-  /* object-fit: contain;  */
-  /* Preserve aspect ratio and fit within the container */
+  /* object-fit: contain;  */  
 }
 
 .custom-overlay span {
@@ -68,35 +67,25 @@
   right: 15%;
 }
 
-.skipoverlaycss {
-  right: 0px;
-  bottom: 5%;
-  width: 20%;
-  background-color: red;
-  border: 2px solid #ccc; /* Add a border */
-  padding: 20px;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .custom-skip-button {
   opacity: 0.95;
   z-index: 2000;
   position: absolute;
   height: 40px;
-  background: transparent;
+  background: #e78b08;
   color: fff;
   box-shadow: 1px 1px 2px rgba(202, 58, 58, 0.1);
-  right: 0px;
-  bottom: 7%;
-  border: 1px solid black;
-  border-right: none;
+  right: 2%;
+  bottom: 8%;
+  border: 2px solid #172936;
+  /* border-right: none; */
   width: 100px;
   text-align: center;
   cursor: pointer;
   font-size: 18px;
   padding-top: 5px;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-family: poppins;
 }
 
 .custom-skip-button span {
@@ -130,21 +119,36 @@
 /* Sales form css */
 .sales-form {
   /* display: none; */
-  width: auto;
-  top: 25%;
+  width: 50%;
+  top: 20%;
   background: rgba(0, 0, 0, 0.5);
 }
-.sales-form button {
+/* .sales-form button {
   width: 100%;
   font-size: 12px;
   bottom: 0px;
   background: #6e9ee5;
+} */
+
+/* document page css */
+.document-form {
+  /* display: none; */
+  width: 60%;
+  top: 20%;
+  background: rgba(0, 0, 0, 0.5);
+}
+/* reporting page css */
+.report-form {
+  /* display: none; */
+  width: 50%;
+  top: 15%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* communication page css */
 .communication-form {
   /* display: none; */
-  width: auto;
+  width: 40%;
   top: 35%;
   background: rgba(0, 0, 0, 0.5);
 }
@@ -154,9 +158,7 @@
   bottom: 0px;
   background: #6e9ee5;
 }
-.cancel-button {
-  background: rgba(214, 6, 6, 0.1);
-}
+
 
 .contactusCss {
   width: 20%;
@@ -170,29 +172,29 @@
 /* contact form css */
 .contact-form {
   /* display: none; */
-  width: 40%;
+  width: 50%;
   top: 22%;
   background: rgba(0, 0, 0, 0.5);
 }
-.contact-form button {
+/* .contact-form button {
   width: 100%;
   font-size: 14px;
   bottom: 0px;
   background: #6e9ee5;
-}
+} */
 
 .common,
 .overlaycss1,
 .overlaycss2,
 .overlaycss3,
 .overlaycss4,
-.sales-form,
 .overlayTitle1 {
   height: auto;
   /* opacity: 0.95; */
   z-index: 2147483647;
   position: absolute;
 }
+
 
 @media (max-width: 768px) {
   .overlaycss,
@@ -212,11 +214,11 @@
     width: 12%;
   }
 
-  .customButton {
+  /* .customButton {
     width: 30%;
     bottom: 10%;
     right: 10%;
-  }
+  } */
 
   .sales-form {
     top: 20%;
@@ -261,30 +263,16 @@ video {
   /* transform: translate(-50%, -50%); */
 }
 
-/* SalesForm.css (or include these styles in your main CSS file) */
-
-.skipoverlaycss button {
-  color: black;
-  /* right: 10px; */
-  /* background-color: #007bff; Set button background color */
-  color: #fff; /* Set button text color */
-  padding: 10px 15px; /* Add padding to the button */
-  border: none; /* Remove button border */
-  cursor: pointer; /* Add pointer cursor on hover */
-}
-
-/* example */
-
-/* YourOverlayStyles.css */
 
 /* Overlay styling */
 .vjs-overlay {
-  background-color: rgba(
+  /* background-color: rgba(
     0,
     0,
     0,
     0.8
-  ); /* Overlay background color with some transparency */
+  );  */
+  /* Overlay background color with some transparency */
   color: white; /* Text color */
   padding: 20px; /* Padding inside the overlay */
   border-radius: 10px; /* Rounded corners */
@@ -304,4 +292,5 @@ video {
   margin: 0 15px !important;
 }
 
-/* custom own skin */
+/* full sceen css */
+
